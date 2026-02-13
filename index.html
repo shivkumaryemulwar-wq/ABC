@@ -148,27 +148,28 @@ button{
 .final-message {
   display:flex;
   flex-direction:column;
-  justify-content:center; /* vertically center */
-  align-items:center;     /* horizontally center */
-  height:100%;            /* full screen height */
+  justify-content:center;  /* vertical center */
+  align-items:center;      /* horizontal center */
+  height:100vh;            /* full viewport height */
   padding:15px;
   box-sizing:border-box;
   text-align:center;
 }
 
 .final-message h2{
-  font-size:5vw; /* responsive text */
+  font-size:6vw;               /* responsive font size */
   max-font-size:24px;
   color:#ff4d6d;
   animation:glowText 2s ease-in-out infinite alternate;
   line-height:1.3;
+  margin-bottom:10px;          /* space between text and image */
 }
 
 .final-message img{
-  width:90%;      /* fit screen width */
+  width:90%;               
   max-width:300px;
-  height:auto;    /* maintain aspect ratio */
-  margin-top:15px;
+  max-height:calc(100vh - 120px); /* ensure text + image fit viewport */
+  height:auto;
   border-radius:20px;
   box-shadow:0 10px 25px rgba(0,0,0,0.3);
   animation:zoomIn 5s ease forwards;
