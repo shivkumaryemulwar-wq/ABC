@@ -118,6 +118,7 @@ button{
   100%{transform:translate(-50%,-50%) scale(1)}
 }
 
+/* Slideshow */
 .slideshow{
   width:100%;
   margin-top:10px;
@@ -142,6 +143,33 @@ button{
   from{opacity:0}
   to{opacity:1}
 }
+
+/* Romantic Final Message Styles */
+.final-message h2{
+  font-size:24px;
+  color:#ff4d6d;
+  animation:glowText 2s ease-in-out infinite alternate;
+}
+
+.final-message img{
+  width:100%;
+  max-width:300px;
+  margin-top:15px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+  animation:zoomIn 5s ease forwards;
+}
+
+@keyframes glowText{
+  0%{text-shadow:0 0 5px #ff4d6d,0 0 10px #ff758f,0 0 20px #ff4d6d;}
+  50%{text-shadow:0 0 10px #ff758f,0 0 20px #ff4d6d,0 0 30px #ff758f;}
+  100%{text-shadow:0 0 5px #ff4d6d,0 0 10px #ff758f,0 0 20px #ff4d6d;}
+}
+
+@keyframes zoomIn{
+  from{transform:scale(0.7);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
 </style>
 </head>
 
@@ -162,7 +190,6 @@ button{
 
 <script>
 const shortText="Sneha ❤️\nYou came into my life and turned it into something beautiful.\n\nWe are already a perfect team…\nBut will you be my Valentine — today, tomorrow, and forever? 💖✨";
-
 const fullText="Sneha, you came into my life and filled it with love 💖\n\nEvery moment with you is my favorite ❤️\nYour smile lights up my world, your laughter is my melody 🎶\nWith you, every day feels like a dream ✨\nI’m grateful for you, for us, and for this beautiful journey together 💞";
 
 const proposalText=document.getElementById("proposalText");
@@ -197,7 +224,6 @@ yesBtn.addEventListener("click",()=>{
   yesSound.play();
   bgMusic.volume = 1;
   bgMusic.play();
-
   confetti({particleCount:300,spread:140,origin:{y:0.6}});
 
   card.innerHTML=`
@@ -221,7 +247,6 @@ yesBtn.addEventListener("click",()=>{
 
 function showSlideshow(){
   card.style.padding="25px 15px";
-
   card.innerHTML=`
     <div class="emoji" style="font-size:50px;">📸💖</div>
     <h2 style="margin-bottom:8px;">Our Beautiful Memories ✨</h2>
@@ -239,7 +264,7 @@ function showSlideshow(){
 
     if(index>=slides.length){
       clearInterval(slideInterval);
-      setTimeout(showFinalMessage,2000);
+      setTimeout(showFinalMessage,1500); // show cinematic ending
       return;
     }
 
@@ -248,12 +273,11 @@ function showSlideshow(){
 }
 
 function showFinalMessage(){
+  card.classList.add("final-message");
   card.innerHTML=`
     <div class="emoji" style="font-size:65px;">💍❤️</div>
-    <h2 style="font-size:24px;margin-top:10px;">
-      Forever With You 💖<br>
-      Today. Tomorrow. Always. ✨
-    </h2>
+    <h2>Forever With You 💖<br>Today. Tomorrow. Always. ✨</h2>
+    <img src="28.jpeg" alt="Forever With You">
   `;
 
   confetti({particleCount:400,spread:160,origin:{y:0.6}});
@@ -271,5 +295,3 @@ function showFinalMessage(){
 </script>
 </body>
 </html>
-
-
