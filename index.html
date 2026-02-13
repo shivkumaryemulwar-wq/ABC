@@ -145,19 +145,34 @@ button{
 }
 
 /* Romantic Final Message Styles */
+.final-message {
+  display:flex;
+  flex-direction:column;
+  justify-content:center; /* vertically center */
+  align-items:center;     /* horizontally center */
+  height:100%;            /* full screen height */
+  padding:15px;
+  box-sizing:border-box;
+  text-align:center;
+}
+
 .final-message h2{
-  font-size:24px;
+  font-size:5vw; /* responsive text */
+  max-font-size:24px;
   color:#ff4d6d;
   animation:glowText 2s ease-in-out infinite alternate;
+  line-height:1.3;
 }
 
 .final-message img{
-  width:100%;
+  width:90%;      /* fit screen width */
   max-width:300px;
+  height:auto;    /* maintain aspect ratio */
   margin-top:15px;
   border-radius:20px;
   box-shadow:0 10px 25px rgba(0,0,0,0.3);
   animation:zoomIn 5s ease forwards;
+  object-fit:cover;
 }
 
 @keyframes glowText{
@@ -264,7 +279,7 @@ function showSlideshow(){
 
     if(index>=slides.length){
       clearInterval(slideInterval);
-      setTimeout(showFinalMessage,1500); // show cinematic ending
+      setTimeout(showFinalMessage,1500); // cinematic ending
       return;
     }
 
